@@ -3,7 +3,7 @@ class CreateTreatments < ActiveRecord::Migration[5.2]
     create_table :treatments do |t|
       t.string :name
       t.text :description
-      t.string :type
+      t.string :type_t
 
       t.timestamps
     end

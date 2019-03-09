@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_193112) do
+ActiveRecord::Schema.define(version: 2019_03_09_201352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 2019_03_09_193112) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "classifications_symptoms", id: false, force: :cascade do |t|
+    t.bigint "classification_id", null: false
+    t.bigint "symptom_id", null: false
   end
 
   create_table "classifications_treatments", id: false, force: :cascade do |t|
@@ -41,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_193112) do
   create_table "treatments", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "type_t"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
