@@ -4,7 +4,8 @@ class TreatmentsController < ApplicationController
   end
 
   def new
-  	@treatment = Treatment.new()
+  	@type_treats = ["Remède externe", "Plantes", " Alimentation", "Comportement"]
+    @treatment = Treatment.new()
   end
 
   def create
@@ -24,6 +25,7 @@ class TreatmentsController < ApplicationController
   end 
 
   def edit
+    @type_treats = ["Remède externe", "Plantes", " Alimentation", "Comportement"]
     # if current_user.id == Mission.find(params[:id]).user_id
       @treatment = Treatment.find(params[:id])
     # else 
@@ -48,6 +50,6 @@ class TreatmentsController < ApplicationController
   private
 
   def treatment_params
-    params.require(:treatment).permit(:name, :description)
+    params.require(:treatment).permit(:name, :description, :type_t)
   end 
 end
