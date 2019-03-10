@@ -1,0 +1,20 @@
+<div class="container">
+  <section class="content">
+    <h1 class="text-center"><%= @treatment.name %></h1>
+
+    <table class="table">
+    <tbody>
+      <% @treatment.attributes.each do |key,value| %>	
+          <tr>
+    	      <th scope="row"><%= key %></th>
+    	      <td><%= value %></td>
+    	    </tr>
+      <% end %>   
+    </tbody> 
+    </table>
+
+    <div class="form-group row">
+      <%= link_to 'Editer Treatment', edit_treatment_path, class: 'nav-link' %>
+    </div>
+  </section>
+</div>

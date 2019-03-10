@@ -1,2 +1,26 @@
-<h1>Treatments#new</h1>
-<p>Find me in app/views/treatments/new.html.erb</p>
+<div class="container">
+	<section class="content">
+		<h1 class="text-center">Nouvelle treatment</h1>
+
+
+		<%= form_for @treatment, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+			<!-- Title -->
+			<div class="form-group row">
+			  <%= f.label :name, 'Nom du treatment', class: 'col-sm-2 col-form-label' %>
+			  <div class="col-sm-10">
+				  <%= f.text_field :name, class:'form-control' %>
+			  </div>
+			</div>
+			<!-- description -->
+			<div class="form-group row">
+			  <%= f.label :description, "Description", class: 'col-sm-2 col-form-label' %>
+			  <div class="col-sm-10">
+				  <%= f.text_area :description, class:'form-control', rows:"3" %>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <%= f.submit "Enregistrer", class: "btn btn-primary btn-block" %>
+			</div>  
+		<% end %>
+	</section>
+</div>

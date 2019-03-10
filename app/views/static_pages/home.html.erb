@@ -1,9 +1,46 @@
-<h1>Sante-log</h1>
+<div class="container">
+  
+	<section class="content">
+		<h1 class="text-center">Sante-log</h1>
+		<div class="card-columns">
 
-<% @symptoms.each do |symptom| %>
-	<div class="card">
-	  <div class="card-body">
-	    <%= link_to symptom.name, symptom_path(symptom.id) %>
-	  </div>
-	</div>
-<% end %>
+			<div class="card">
+			  <div class="card-header">
+			    Symptoms
+			  </div>
+			  <ul class="list-group list-group-flush">
+			  	<% @symptoms.each do |symptom| %>
+				    <li class="list-group-item">
+				    	<%= link_to symptom.name, symptom_path(symptom.id) %>
+				    </li>
+				<% end %>
+			  </ul>
+			</div>
+
+
+			<div class="card">
+			  <div class="card-header">
+			    Treatments
+			  </div>
+			  <ul class="list-group list-group-flush">
+			  	<% @treatments.each do |treatment| %>
+				    <li class="list-group-item">
+				    	<%= link_to treatment.name, treatment_path(treatment.id) %>
+				    </li>
+				<% end %>
+			  </ul>
+			</div>
+
+			<div class="card">
+			  <div class="card-header">
+			    Featured
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Cras justo odio</li>
+			    <li class="list-group-item">Dapibus ac facilisis in</li>
+			    <li class="list-group-item">Vestibulum at eros</li>
+			  </ul>
+			</div>
+		</div>
+	</section>
+</div>
