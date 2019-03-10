@@ -20,7 +20,9 @@ class SymptomsController < ApplicationController
   end 
 
   def show
+    @type_treats = ["Remède externe", "Plantes", " Alimentation", "Comportement"]
   	@symptom = Symptom.find(params[:id])
+    @treatments = Treatment.all
   end 
 
   def edit

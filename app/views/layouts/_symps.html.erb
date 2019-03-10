@@ -1,0 +1,25 @@
+<section class="content">
+  <h2 class="text-center">Symptoms</h2>
+  <div class="card-columns">
+    <div class="card">
+      <!-- create the symptoms types lists (headers) -->
+      <% @classes.each do |classif| %>
+        <div class="card-header">
+          <%= classif.name %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <!-- CHeck if the symptoms related to the symptom belongs to the header -->
+          <% @treatment.symptoms.each do |symptom| %>
+            <% symptom.classifications.where(name: classif.name).each do |class_symp| %>
+              <% if class_symp == classif %>
+                <li class="list-group-item">
+                  <%= link_to symptom.name, symptom_path(symptom.id) %>
+                </li>
+              <% end %>  
+            <% end %>   
+          <% end %>
+        </ul>
+      <% end %>  
+    </div>
+  </div>
+</section>

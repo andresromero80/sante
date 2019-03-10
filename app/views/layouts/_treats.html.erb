@@ -1,0 +1,22 @@
+<section class="content">
+  <h2 class="text-center">Treatments</h2>
+  <div class="card-columns">
+    <div class="card">
+      <!-- create the treatment types lists -->
+      <% @type_treats.each do |type| %>
+        <div class="card-header">
+          <%= type %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @symptom.treatments.each do |treatment| %>
+            <% if treatment.type_t == type %>
+              <li class="list-group-item">
+                <%= link_to treatment.name, treatment_path(treatment.id) %>
+              </li>
+            <% end %>  
+        <% end %>
+        </ul>
+      <% end %>  
+    </div>
+  </div>
+</section>

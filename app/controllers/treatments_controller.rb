@@ -22,6 +22,7 @@ class TreatmentsController < ApplicationController
 
   def show
   	@treatment = Treatment.find(params[:id])
+    @classes = Classification.all
   end 
 
   def edit
