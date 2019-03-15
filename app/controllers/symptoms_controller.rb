@@ -54,7 +54,7 @@ class SymptomsController < ApplicationController
 
   def symptom_params
     # params.require(:symptom).permit(:name, :description, { classifications_symptoms_attributes: [:id, :name] })
-    params.require(:symptom).permit(:name, :description, classifications_symptoms_attributes: [{classifications_attributes: [:name]}])
+    params.require(:symptom).permit(:name, :description, classification_ids: [])
   end 
 
 end

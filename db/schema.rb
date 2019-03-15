@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_201352) do
+ActiveRecord::Schema.define(version: 2019_03_15_151919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "classification_id"
+    t.bigint "symptom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classification_id"], name: "index_assignments_on_classification_id"
+    t.index ["symptom_id"], name: "index_assignments_on_symptom_id"
+  end
 
   create_table "classifications", force: :cascade do |t|
     t.string "name"
@@ -29,6 +38,15 @@ ActiveRecord::Schema.define(version: 2019_03_09_201352) do
   create_table "classifications_treatments", id: false, force: :cascade do |t|
     t.bigint "classification_id", null: false
     t.bigint "treatment_id", null: false
+  end
+
+  create_table "relations", force: :cascade do |t|
+    t.bigint "symptom_id"
+    t.bigint "treatment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["symptom_id"], name: "index_relations_on_symptom_id"
+    t.index ["treatment_id"], name: "index_relations_on_treatment_id"
   end
 
   create_table "symptoms", force: :cascade do |t|
@@ -51,4 +69,8 @@ ActiveRecord::Schema.define(version: 2019_03_09_201352) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "assignments", "classifications"
+  add_foreign_key "assignments", "symptoms"
+  add_foreign_key "relations", "symptoms"
+  add_foreign_key "relations", "treatments"
 end

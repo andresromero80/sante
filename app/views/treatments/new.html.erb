@@ -29,6 +29,14 @@
 				<% end %>
 			  </div>
 			</div>
+			<!-- classification -->
+			  <p>
+			    <%= f.label :symptoms %><br />
+			    <% for symp in Symptom.all %>
+			      <%= check_box_tag "treatment[symptom_ids][]", symp.id, @treatment.symptoms.include?(symp) %>
+			      <%=h symp.name %><br />
+			    <% end %>
+			  </p>
 			<div class="form-group row">
 			  <%= f.submit "Enregistrer", class: "btn btn-primary btn-block" %>
 			</div>  

@@ -51,6 +51,6 @@ class TreatmentsController < ApplicationController
   private
 
   def treatment_params
-    params.require(:treatment).permit(:name, :description, :type_t)
+    params.require(:treatment).permit(:name, :description, :type_t, symptom_ids: [])
   end 
 end

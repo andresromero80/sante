@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  classification: one
+  symptoms: one
+
+two:
+  classification: two
+  symptoms: two

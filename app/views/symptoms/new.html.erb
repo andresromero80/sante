@@ -19,12 +19,13 @@
 			  </div>
 			</div>
 			<!-- classification -->
-			
-
-			  <%= f.fields_for :classifications_symptoms do |class_symptoms_form| %>
-			     <%= class_symptoms_form.select(:id, options_from_collection_for_select(Classification.all, "id", "name")) %> 
-			  <br />
-			  <% end %>
+			  <p>
+			    <%= f.label :classifications %><br />
+			    <% for classif in Classification.all %>
+			      <%= check_box_tag "symptom[classification_ids][]", classif.id, @symptom.classifications.include?(classif) %>
+			      <%=h classif.name %><br />
+			    <% end %>
+			  </p>
 
 
 			<div class="form-group row">
