@@ -33,10 +33,20 @@
 				<% end %>
 			  </div>
 			</div>
+			<!-- classification -->
+			  <div class="form-group row">
+			    <%= f.label :symptoms, class: 'col-sm-2 col-form-label' %><br />
+			    <div class="col-sm-10">
+				    <% for symp in Symptom.all %>
+				      <%= check_box_tag "treatment[symptom_ids][]", symp.id, @treatment.symptoms.include?(symp) %>
+				      <%=h symp.name %><br />
+				    <% end %>
+				</div>
+			  </div>
+			  			
 			<div class="form-group row">
 			  <%= button_to "Enregistrer", @treatment, method: :update, class: "btn btn-primary btn-block" %>
 			</div> 
-
 			<div class="form-group row">
 				<%= button_to "Supprimer ", @treatment, method: :delete, class: "btn btn-danger btn-block" %>
 		    </div> 

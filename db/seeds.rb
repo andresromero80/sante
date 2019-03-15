@@ -13,6 +13,7 @@
  #Create Symptoms
   burn = Symptom.create!(name: "Brûlures")
   liver = Symptom.create!(name: "Foie(nettoyage)")
+  herpes = Symptom.create!(name: "Herpès")
 
  #Create Treatments 
   types = ["Plantes", "Comportement", "Alimentation", "Remède externe"]
@@ -22,12 +23,16 @@
 
   concombre = Treatment.create!(name: "Concombre", type_t: types[0])
 
+  vit_c = Treatment.create!(name: "Vitamine C", description: "À haute dose",type_t: types[3])
  #Relation Cassification - Symptoms
   burn.classifications << cur_class
   liver.classifications << prev_class
+  herpes.classifications << cur_class
 
   #Relation Symptoms - Treatments
   burn.treatments << plantain
   burn.treatments << aloe
 
   liver.treatments << concombre
+
+  herpes.treatments << vit_c
