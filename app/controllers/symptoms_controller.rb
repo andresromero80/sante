@@ -5,6 +5,8 @@ class SymptomsController < ApplicationController
 
   def new
   	@symptom = Symptom.new()
+    @classes = Classification.all
+    # @symptom.classifications_symptoms.build.build_classification
   end
 
   def create
@@ -26,6 +28,7 @@ class SymptomsController < ApplicationController
   end 
 
   def edit
+    @classes = Classification.all
     # if current_user.id == Mission.find(params[:id]).user_id
       @symptom = Symptom.find(params[:id])
     # else 
@@ -50,7 +53,8 @@ class SymptomsController < ApplicationController
   private
 
   def symptom_params
-    params.require(:symptom).permit(:name, :description)
+    # params.require(:symptom).permit(:name, :description, { classifications_symptoms_attributes: [:id, :name] })
+    params.require(:symptom).permit(:name, :description, classifications_symptoms_attributes: [{classifications_attributes: [:name]}])
   end 
 
 end
